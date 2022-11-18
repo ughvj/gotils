@@ -2,9 +2,11 @@ package stringctr
 
 func padBy(target string, digit int, pad string, reversed bool, direction string) (padded string) {
 	lack := digit - len(target)
+
 	if lack <= 0 {
 		return target
 	}
+
 	if len(pad) == 0 {
 		return target
 	}
