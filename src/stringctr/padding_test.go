@@ -1,9 +1,8 @@
 package stringctr
 
 import (
-	"testing"
-
 	"github.com/ughvj/gotils/src/testmsg"
+	"testing"
 )
 
 func Test_PaddingLeftWillSucceed(t *testing.T) {
