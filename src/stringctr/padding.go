@@ -48,23 +48,36 @@ func reverse(s string) string {
 }
 
 // PaddingLeft is pad the string on the left by any character except for multi-byte.
-func PaddingLeft(target string, digit int, pad string) string {
-	return padBy(target, digit, pad, false, "left")
+func (p *Padding) Left(target string, digit int, pad string, reverse bool) string {
+	return padBy(target, digit, pad, reverse, "left")
 }
 
 // PaddingRight is pad the string on the right by any character except for multi-byte.
-func PaddingRight(target string, digit int, pad string) string {
-	return padBy(target, digit, pad, false, "right")
+func (p *Padding) Right(target string, digit int, pad string, reverse bool) string {
+	return padBy(target, digit, pad, reverse, "right")
 }
 
 // PaddingBoth is pad the string on both(left side + right side).
-func PaddingBoth(target string, pad string) string {
-	padded := PaddingLeft(target, len(target)+len(pad), pad)
-	return PaddingRight(padded, len(padded)+len(pad), pad)
+func (p *Padding) Both(target string, pad string) string {
+	padded := p.Left(target, len(target)+len(pad), pad, false)
+	return p.Right(padded, len(padded)+len(pad), pad, false)
 }
 
 // PaddingBothWithLineSymmetry is pad the string on both(left side(reversed) + right side).
-func PaddingBothWithLineSymmetry(target string, pad string) string {
-	padded := padBy(target, len(target)+len(pad), pad, true, "left")
-	return PaddingRight(padded, len(padded)+len(pad), pad)
+func (p *Padding) BothWithLineSymmetry(target string, pad string) string {
+	padded := p.Left(target, len(target)+len(pad), pad, true)
+	return p.Right(padded, len(padded)+len(pad), pad, false)
+}
+
+func NewPadding() *Padding {
+	return &Padding{}
+}
+
+type Padding struct {}
+
+type PaddingInterface interface {
+	Left(target string, digit int, pad string, reverse bool) string
+	Right(target string, digit int, pad string, reverse bool) string
+	Both(target string, pad string) string
+	BothWithLineSymmetry(target string, pad string) string
 }

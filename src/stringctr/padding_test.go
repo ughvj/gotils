@@ -1,12 +1,14 @@
 package stringctr
 
 import (
-	"github.com/ughvj/gotils/src/testmsg"
 	"testing"
+
+	"github.com/ughvj/gotils/src/testmsg"
 )
 
-func Test_PaddingLeftWillSucceed(t *testing.T) {
+func Test_LeftWillSucceed(t *testing.T) {
 	// Given.
+	padding := Padding{}
 	target := "hogehoge"
 
 	expected := []string{
@@ -23,15 +25,15 @@ func Test_PaddingLeftWillSucceed(t *testing.T) {
 
 	// When.
 	actual := []string{
-		PaddingLeft(target, -1, "0"),
-		PaddingLeft(target, 0, "0"),
-		PaddingLeft(target, 7, "0"),
-		PaddingLeft(target, 8, "0"),
-		PaddingLeft(target, 8, ""),
-		PaddingLeft(target, 9, "0"),
-		PaddingLeft(target, 11, "xyz"),
-		PaddingLeft(target, 12, "xyz"),
-		// PaddingLeft(target, 14, "あいうえお") // unsupported.
+		padding.Left(target, -1, "0", false),
+		padding.Left(target, 0, "0", false),
+		padding.Left(target, 7, "0", false),
+		padding.Left(target, 8, "0", false),
+		padding.Left(target, 8, "", false),
+		padding.Left(target, 9, "0", false),
+		padding.Left(target, 11, "xyz", false),
+		padding.Left(target, 12, "xyz", false),
+		// padding.Left(target, 14, "あいうえお") // unsupported.
 	}
 
 	// Then.
@@ -42,8 +44,9 @@ func Test_PaddingLeftWillSucceed(t *testing.T) {
 	}
 }
 
-func Test_PaddingRightWillSucceed(t *testing.T) {
+func Test_RightWillSucceed(t *testing.T) {
 	// Given.
+	padding := Padding{}
 	target := "hogehoge"
 
 	expected := []string{
@@ -60,15 +63,15 @@ func Test_PaddingRightWillSucceed(t *testing.T) {
 
 	// When.
 	actual := []string{
-		PaddingRight(target, -1, "0"),
-		PaddingRight(target, 0, "0"),
-		PaddingRight(target, 7, "0"),
-		PaddingRight(target, 8, "0"),
-		PaddingRight(target, 8, ""),
-		PaddingRight(target, 9, "0"),
-		PaddingRight(target, 11, "xyz"),
-		PaddingRight(target, 12, "xyz"),
-		// PaddingRight(target, 14, "あいうえお") // unsupported.
+		padding.Right(target, -1, "0", false),
+		padding.Right(target, 0, "0", false),
+		padding.Right(target, 7, "0", false),
+		padding.Right(target, 8, "0", false),
+		padding.Right(target, 8, "", false),
+		padding.Right(target, 9, "0", false),
+		padding.Right(target, 11, "xyz", false),
+		padding.Right(target, 12, "xyz", false),
+		// padding.Right(target, 14, "あいうえお") // unsupported.
 	}
 
 	// Then.
@@ -79,8 +82,9 @@ func Test_PaddingRightWillSucceed(t *testing.T) {
 	}
 }
 
-func Test_PaddingBothWillSucceed(t *testing.T) {
+func Test_BothWillSucceed(t *testing.T) {
 	// Given.
+	padding := Padding{}
 	target := "hogehoge"
 
 	expected := []string{
@@ -93,11 +97,11 @@ func Test_PaddingBothWillSucceed(t *testing.T) {
 
 	// When.
 	actual := []string{
-		PaddingBoth(target, ""),
-		PaddingBoth(target, "x"),
-		PaddingBoth(target, "xx"),
-		PaddingBoth(target, "xyz"),
-		// PaddingBoth(target, "あいうえお") // unsupported.
+		padding.Both(target, ""),
+		padding.Both(target, "x"),
+		padding.Both(target, "xx"),
+		padding.Both(target, "xyz"),
+		// padding.Both(target, "あいうえお") // unsupported.
 	}
 
 	// Then.
@@ -108,8 +112,9 @@ func Test_PaddingBothWillSucceed(t *testing.T) {
 	}
 }
 
-func Test_PaddingBothWithLineSymmetryWillSucceed(t *testing.T) {
+func Test_BothWithLineSymmetryWillSucceed(t *testing.T) {
 	// Given.
+	padding := Padding{}
 	target := "hogehoge"
 
 	expected := []string{
@@ -121,10 +126,10 @@ func Test_PaddingBothWithLineSymmetryWillSucceed(t *testing.T) {
 
 	// When.
 	actual := []string{
-		PaddingBothWithLineSymmetry(target, ""),
-		PaddingBothWithLineSymmetry(target, "x"),
-		PaddingBothWithLineSymmetry(target, "xyz"),
-		// PaddingBothWithLineSymmetry(target, "あいうえお") // unsupported.
+		padding.BothWithLineSymmetry(target, ""),
+		padding.BothWithLineSymmetry(target, "x"),
+		padding.BothWithLineSymmetry(target, "xyz"),
+		// padding.BothWithLineSymmetry(target, "あいうえお") // unsupported.
 	}
 
 	// Then.
