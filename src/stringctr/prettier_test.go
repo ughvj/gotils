@@ -11,7 +11,15 @@ func Test_Prettier(t *testing.T) {
 ***   Clang world !!       ***
 `
 	prettier := NewPrettier()
-	actual, err := prettier.Target("Hello, Golang world and goodbye, Clang world !!").RowLimit(30).TargetLimit(18).Margin(3).Padding("*").Prettify()
+	actual, err := prettier.
+		Target("Hello, Golang world and goodbye, Clang world !!").
+		RowLimit(30).
+		TargetLimit(18).
+		Margin(3).
+		Padding("*").
+		IgnoreEmpty(false).
+		Prettify()
+
 	fmt.Printf("%s", actual)
 	if err != nil {
 		t.Error("something went wrong")
