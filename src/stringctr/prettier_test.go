@@ -29,7 +29,7 @@ func Test_Prettier_IgnoreEmptyIsTrue(t *testing.T) {
 	}
 }
 
-
+/*
 func Test_Prettier_IgnoreEmptyIsFalse(t *testing.T) {
 	expected := `***   Hello, Golang        ***
 ***   world and goodbye,   ***
@@ -53,3 +53,4 @@ func Test_Prettier_IgnoreEmptyIsFalse(t *testing.T) {
 		t.Error("actual is unexpected")
 	}
 }
+*/
